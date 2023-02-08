@@ -287,11 +287,9 @@ public class TaskbarManager {
         destroyExistingTaskbar();
 
         boolean isTaskBarEnabled = dp != null && isTaskbarPresent(dp);
-
-        SystemUiProxy sysui = SystemUiProxy.INSTANCE.get(mContext);
-        sysui.setTaskbarEnabled(isTaskBarEnabled);
         if (!isTaskBarEnabled) {
-            sysui.notifyTaskbarStatus(/* visible */ false, /* stashed */ false);
+            SystemUiProxy.INSTANCE.get(mContext)
+                    .notifyTaskbarStatus(/* visible */ false, /* stashed */ false);
             return;
         }
 
